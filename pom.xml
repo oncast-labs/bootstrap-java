@@ -12,11 +12,14 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.flyway.user>user</project.flyway.user>
+		<project.flyway.password>password</project.flyway.password>
+		<project.flyway.schema>schema</project.flyway.schema>
 	</properties>
 
 	<build>
 		<outputDirectory>${basedir}/src/main/webapp/WEB-INF/classes</outputDirectory>
-		<finalName>${parent.artifactId}</finalName>
+		<finalName>${artifactId}</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -59,17 +62,11 @@
 				<artifactId>flyway-maven-plugin</artifactId>
 				<version>2.0.3</version>
 				<configuration>
-					<user>myUser</user>
-					<password>mySecretPwd</password>
+					<user>${project.flyway.user}</user>
+					<password>${project.flyway.password}</password>
 					<schemas>
-						<schema>schema1</schema>
-						<schema>schema2</schema>
-						<schema>schema3</schema>
+						<schema>${project.flyway.schema}</schema>
 					</schemas>
-					<placeholders>
-						<keyABC>valueXYZ</keyABC>
-						<otherplaceholder>value123</otherplaceholder>
-					</placeholders>
 				</configuration>
 			</plugin>
 		</plugins>
